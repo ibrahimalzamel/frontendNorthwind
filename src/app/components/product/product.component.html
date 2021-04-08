@@ -1,4 +1,32 @@
-<table class="table">
-    <tr></tr> 
-
+<div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+<table *ngIf="dataLoaded==true" class="table">
+    <thead>
+        <tr>
+            <th>productID</th>
+            <th>categoryID</th>
+            <th>productName</th>
+            <th>unitsInStock</th>
+            <th>unitPrice</th>
+            <th>supplierID</th>
+            <th>quantityPerUnit</th>
+            <th>unitsOnOrder</th>
+            <th>reorderLevel</th>
+            <th>discontinued</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let product of products">
+        <td>{{product.productID}}</td>
+        <td>{{product.categoryID}}</td>
+        <td>{{product.productName}}</td>
+        <td>{{product.unitsInStock}}</td>
+        <td>{{product.unitPrice}}</td>
+        <td>{{product.supplierID}}</td>
+        <td>{{product.quantityPerUnit}}</td>
+        <td>{{product.unitsOnOrder}}</td>
+        <td>{{product.reorderLevel}}</td>
+        <td>{{product.discontinued}}</td>
+    </tr> 
+   
 </table>

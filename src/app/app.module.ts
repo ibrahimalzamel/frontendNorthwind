@@ -8,13 +8,15 @@ import { ProductComponent } from './components/product/product.component';
 import { CategoryComponent } from './components/category/category.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { from } from 'rxjs';
+import { TodoComponent } from './components/todo/todo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     CategoryComponent,
-    NaviComponent
+    NaviComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
