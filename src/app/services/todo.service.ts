@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Porduct } from '../models/product';
-import { ProductResponseModel } from '../models/productResponseModel';
 import { Todo } from '../models/todo';
 import { TodoResponseModel } from '../models/TodoResponseModel';
 
