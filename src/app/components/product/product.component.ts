@@ -45,7 +45,7 @@ export class ProductComponent implements OnInit {
 addToCart(product:Porduct){
   if(product.productID===1)
   {
-    this.toastrService.error("Hata","Bu ürün sepete eklenmez")
+    this.toastrService.error("Bu ürün sepete eklenmez","Hata")
   }else{    
    this.toastrService.success("Sepete eklendi",product.productName)
    this.cartService.addToCart(product);
