@@ -1,32 +1,39 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
+<div *ngIf="dataLoaded==false" 
+class="spinner-border text-primary" role="status">
     <span class="visually-hidden">Loading...</span>
+  </div>
+  <div class="mb-3">
+    <label for="filterText" class="form-label">Ürün ara</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" 
+    placeholder="arama ifadesi giriniz">
+  </div>
+  <div *ngIf="filterText.length>2" class="alert alert-success" role="alert">
+    {{filterText}}
   </div>
 <table *ngIf="dataLoaded==true" class="table">
     <thead>
         <tr>
-            <th>productID</th>
-            <th>categoryID</th>
-            <th>productName</th>
-            <th>unitsInStock</th>
-            <th>unitPrice</th>
-            <th>supplierID</th>
-            <th>quantityPerUnit</th>
-            <th>unitsOnOrder</th>
-            <th>reorderLevel</th>
-            <th>discontinued</th>
+            <th>Id</th>
+            <th>kategory</th>
+            <th>Ürün adı</th>
+            <th>Stok Adedi</th>
+            <th>Fiyat</th>    
+            <th>KDV'li Adedi</th>
+            <th></th>
+
+          
         </tr>
     </thead>
-    <tr *ngFor="let product of products">
+    <tbody>
+      <tr *ngFor="let product of products | filterPipe:filterText">
         <td>{{product.productID}}</td>
         <td>{{product.categoryID}}</td>
-        <td>{{product.productName}}</td>
+        <td>{{product.productName | uppercase}}</td>
         <td>{{product.unitsInStock}}</td>
-        <td>{{product.unitPrice}}</td>
-        <td>{{product.supplierID}}</td>
-        <td>{{product.quantityPerUnit}}</td>
-        <td>{{product.unitsOnOrder}}</td>
-        <td>{{product.reorderLevel}}</td>
-        <td>{{product.discontinued}}</td>
+        <td>{{product.unitPrice|currency}}</td>
+        <td>{{product.unitPrice|vatAdded:18|currency}}</td>
+        <td><button (click)="addToCart(product)" type="button" class="btn btn-success">Sepete Ekle</button></td>
     </tr> 
+    </tbody>
    
 </table>
